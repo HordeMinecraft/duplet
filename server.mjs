@@ -13,6 +13,7 @@ const data = resolve(env.SHOROH_WEB_DATA ?? join(here,'data'));
 const billingEnabled = ['SHOROH_SHOP_ID','SHOROH_SHOP_KEY','SHOROH_PUBLIC_ORIGIN','SHOROH_VIP_RUB']
   .every(key => Boolean(env[key]));
 const origin = billingEnabled ? new URL(env.SHOROH_PUBLIC_ORIGIN).origin : '';
+const frontendOrigin = env.SHOROH_FRONTEND_ORIGIN ? new URL(env.SHOROH_FRONTEND_ORIGIN).origin : '';
 const price = billingEnabled ? env.SHOROH_VIP_RUB : '';
 const bridge = bridgeConfig(env,billingEnabled);
 const payments = billingEnabled && bridge?.syncVip === true;
@@ -142,6 +143,11 @@ async function handle(request,response) {
   response.setHeader('Referrer-Policy','no-referrer');
   const url = new URL(request.url,'http://localhost');
   const {pathname} = url;
+  const publicData = pathname === '/api/status' || pathname === '/api/ranks' || pathname === '/api/bans';
+  if (publicData && request.method === 'GET' && frontendOrigin) {
+    response.setHeader('Vary','Origin');
+    if (request.headers.origin === frontendOrigin) response.setHeader('Access-Control-Allow-Origin',frontendOrigin);
+  }
   if (request.method === 'GET' && staticFiles.has(pathname)) {
     const name = staticFiles.get(pathname);
     const file = await readFile(join(publicDir,name)).catch(error => {

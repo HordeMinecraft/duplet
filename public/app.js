@@ -10,9 +10,39 @@ let address = $('#address-note').textContent;
 let checkoutAvailable = false;
 let currentOrder = new URLSearchParams(location.search).get('order');
 let orderTimer;
+const configuredApi = document.querySelector('meta[name="duplet-api"]')?.content;
+const apiBase = configuredApi ? new URL(configuredApi).origin : location.origin;
+const snapshotUrl = document.querySelector('meta[name="duplet-snapshot"]')?.content;
+let snapshotRequest;
 
 async function api(path,options) {
-  const response = await fetch(path,options);
+  if (snapshotUrl && !configuredApi && !options) {
+    const url = new URL(path,location.origin);
+    const route = url.pathname.split('/').at(-1);
+    if (['status','bans','ranks'].includes(route)) {
+      snapshotRequest ??= fetch(new URL(snapshotUrl,document.baseURI),{cache:'no-store'})
+        .then(response => {
+          if (!response.ok) throw new Error('Не удалось получить данные сервера.');
+          return response.json();
+        }).finally(() => { snapshotRequest = undefined; });
+      const snapshot = await snapshotRequest;
+      for (const label of document.querySelectorAll('.snapshot-note')) {
+        label.hidden = false;
+        label.textContent = 'Снимок данных на ' + time(snapshot.updatedAt) + ' МСК';
+      }
+      if (route === 'status') {
+        const status = snapshot.status;
+        return {...status, checkout:false, price:null, snapshot:true};
+      }
+      if (route === 'ranks') return snapshot.ranks;
+      const normalize = value => value.normalize('NFKC').trim().toLocaleLowerCase('ru-RU');
+      const nick = normalize(url.searchParams.get('q') ?? '');
+      const activeOnly = url.searchParams.get('active') === '1';
+      return snapshot.bans.filter(ban => normalize(ban.nick).includes(nick) &&
+        (!activeOnly || (!ban.lifted && ban.expires * 1000 > Date.now())));
+    }
+  }
+  const response = await fetch(new URL(path,apiBase),options);
   const value = await response.json();
   if (!response.ok) throw new Error(value.error ?? 'Сайт не ответил. Обнови страницу.');
   return value;
@@ -39,8 +69,9 @@ async function refreshStatus() {
       text('#connect-command','connect ' + address);
       text('#address-note',address);
     }
-    $('#status-dot').classList.toggle('online',Boolean(game));
-    text('#status-label',game ? 'Сервер на связи' : state.lastSeen ? 'Нет свежих данных' : 'Ждём данные игры');
+    $('#status-dot').classList.toggle('online',Boolean(game) && !state.snapshot);
+    text('#status-label',state.snapshot ? 'Последний снимок' : game ? 'Сервер на связи' :
+      state.lastSeen ? 'Нет свежих данных' : 'Ждём данные игры');
     text('#status-map',game?.map ?? '—');
     text('#status-phase',!game ? '—' : game.phase === 2 ? 'Раунд ' + game.round :
       game.phase === 1 ? 'Смена режима' : 'Разминка · ' + (warmups[game.warmup] ?? 'подготовка'));
@@ -54,6 +85,7 @@ async function refreshStatus() {
   } catch {
     $('#status-dot').classList.remove('online');
     text('#status-label','Статус временно недоступен');
+    if (!currentOrder) text('#checkout-note','Не удалось проверить доступность оплаты.');
     for (const field of ['map','players','phase']) text('#status-' + field,'—');
   }
 }
@@ -164,7 +196,10 @@ $('#checkout').addEventListener('submit',async event => {
       body:JSON.stringify({nick:form.get('nick'),code:form.get('code')}),
     });
     currentOrder = order.id;
-    history.replaceState(null,'','/?order=' + order.id + '#vip');
+    const orderUrl = new URL(location.href);
+    orderUrl.searchParams.set('order',order.id);
+    orderUrl.hash = 'vip';
+    history.replaceState(null,'',orderUrl);
     if (order.redirect) location.assign(order.redirect);
     else renderOrder(order);
   } catch (error) {

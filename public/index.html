@@ -6,15 +6,15 @@
   <meta name="description" content="Дуплет — паблик Counter-Strike 1.6. Текущая карта, ранги, бан-лист и Steam VIP.">
   <meta name="theme-color" content="#0b111c">
   <title>Дуплет — паблик Counter-Strike 1.6</title>
-  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="/app.css">
-  <script type="module" src="/app.js"></script>
+  <link rel="icon" href="./favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="./app.css">
+  <script type="module" src="./app.js"></script>
 </head>
 <body>
   <a class="skip-link" href="#content">К содержанию</a>
   <header class="top">
     <div class="shell header">
-      <a href="#main" class="wordmark" aria-label="Дуплет, главная"><img src="/favicon.svg" alt="" width="38" height="38"><span>ДУПЛЕТ<small>COUNTER-STRIKE 1.6</small></span></a>
+      <a href="#main" class="wordmark" aria-label="Дуплет, главная"><img src="./favicon.svg" alt="" width="38" height="38"><span>ДУПЛЕТ<small>COUNTER-STRIKE 1.6</small></span></a>
       <nav aria-label="Разделы сайта">
         <a href="#main">Сервер</a><a href="#ranks">Ранги</a><a href="#bans">Бан-лист</a><a href="#vip">Steam VIP</a>
       </nav>
@@ -42,6 +42,7 @@
           <div><span>Игроки</span><strong id="status-players">— / —</strong></div>
           <div><span>Режим</span><strong id="status-phase">—</strong></div>
         </section>
+        <p class="muted table-note snapshot-note" hidden></p>
         <section class="block" aria-labelledby="round-title">
           <div class="section-heading"><h2 id="round-title">Как проходит матч</h2><a href="#maps">Карты <span aria-hidden="true">↘</span></a></div>
           <div class="steps">
@@ -85,6 +86,7 @@
         <table><thead><tr><th>Место</th><th>Игрок</th><th>Звание</th><th>XP</th><th>Убийства</th><th>Смерти</th></tr></thead>
         <tbody id="rank-rows"><tr><td colspan="6">Загружаем статистику…</td></tr></tbody></table>
       </div>
+      <p class="muted table-note snapshot-note" hidden></p>
       <div class="dual">
         <article class="panel"><h2>Звания</h2><dl id="rank-scale" class="facts"></dl></article>
         <article class="panel"><h2>Коллекция</h2>
@@ -108,6 +110,7 @@
         <tbody id="ban-rows"><tr><td colspan="5">Загружаем бан-лист…</td></tr></tbody></table>
       </div>
       <p class="muted table-note">Голосование через <code>/voteban</code> требует минимум четырёх участников помимо выбранного игрока. При 70% голосов «за» выдаётся бан на 30 минут.</p>
+      <p class="muted table-note snapshot-note" hidden></p>
     </section>
     <section id="vip" class="shell interior" data-page hidden>
       <div class="section-heading page-title"><div><h1>Steam VIP</h1><p class="muted">Семь дней при первом входе со Steam. Привилегии открываются с третьего раунда.</p></div></div>
@@ -127,6 +130,6 @@
       </div>
     </section>
   </main>
-  <footer><div class="shell footer"><a href="#main" class="wordmark"><img src="/favicon.svg" alt="" width="30" height="30"> ДУПЛЕТ</a><a href="#bans">Бан-лист</a><span>Counter-Strike 1.6</span></div></footer>
+  <footer><div class="shell footer"><a href="#main" class="wordmark"><img src="./favicon.svg" alt="" width="30" height="30"> ДУПЛЕТ</a><a href="#bans">Бан-лист</a><span>Counter-Strike 1.6</span></div></footer>
 </body>
 </html>

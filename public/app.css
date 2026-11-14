@@ -35,7 +35,7 @@ nav a { padding: 24px 0 22px; border-bottom: 2px solid transparent; color: var(-
 nav a:hover, nav a[aria-current] { color: var(--text); border-color: var(--cyan); }
 .hero {
   background: linear-gradient(90deg,#0c1320 0%,#0c1320ed 21%,#0c132046 66%,#0c13200d 100%),
-    linear-gradient(0deg,#0b111c, transparent 35%), #111f2e url('/duplet-hero.jpg') center 55% / cover no-repeat;
+    linear-gradient(0deg,#0b111c, transparent 35%), #111f2e url('./duplet-hero.jpg') center 55% / cover no-repeat;
   border-bottom: 1px solid var(--line);
 }
 .hero-content { min-height: 498px; padding: 99px 0 79px; }
@@ -95,6 +95,7 @@ td[colspan] { color: var(--muted); text-align: center; padding: 32px 16px; white
 .ban-status { color: var(--muted); border: 1px solid var(--line); border-radius: 5px; display: inline-block; padding: 2px 8px; font-size: 12px; }
 .ban-status[data-active] { color: #ffb8c4; border-color: #754154; background: #402537; }
 .table-note { margin-top: 15px; font-size: 14px; }
+.signal + .snapshot-note { margin-top: -33px; margin-bottom: 24px; }
 .filters { display: flex; align-items: end; gap: 18px; margin-bottom: 14px; }
 .filters label:first-child { flex: 1; }
 label { display: grid; gap: 6px; color: #ccdae8; font-size: 14px; font-weight: 650; }
@@ -116,6 +117,7 @@ footer { background: #0e1622; border-top: 1px solid var(--line); }
   .hero { background-position: 59% center; }
   .hero-content { min-height: 385px; padding: 67px 0 60px; }
   .signal { grid-template-columns: repeat(2,minmax(0,1fr)); margin-bottom: 34px; }
+  .signal + .snapshot-note { margin-top: -20px; }
   .signal > div { min-height: 68px; padding-inline: 13px; }
   .signal > div:nth-child(3) { border-left: 0; }
   .signal > div:nth-child(n+3) { border-top: 1px solid var(--line); }
