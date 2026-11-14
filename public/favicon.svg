@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" aria-label="Сокол">
+<path fill="#0a1225" stroke="#e5f6ee" stroke-width="4" d="M50 4 90 20Q96 74 50 97 4 74 10 20Z"/>
+<path fill="#f5fcff" d="M24 20 41 14Q64 14 76 30 90 38 79 50Q82 42 62 41 51 45 51 50L52 59 37 51 46 38 17 52 32 33 13 37Q24 25 41 22ZM47 23 56 34 68 36 73 31Z" fill-rule="evenodd"/>
+<path fill="#53f7ef" d="m25 48 25 16 25-16v10L50 74 25 58Z"/>
+<path fill="#53f7ef" d="m25 62 25 17 25-17v9L50 89 25 71Z"/>
+<path fill="#ff3f92" d="m57 27 11 4-4 2-5-1Z"/>
+</svg>

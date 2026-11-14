@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Дуплет — паблик Counter-Strike 1.6. Текущая карта, ранги, бан-лист и Steam VIP.">
+  <meta name="theme-color" content="#0b111c">
+  <title>Дуплет — паблик Counter-Strike 1.6</title>
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/app.css">
+  <script type="module" src="/app.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#content">К содержанию</a>
+  <header class="top">
+    <div class="shell header">
+      <a href="#main" class="wordmark" aria-label="Дуплет, главная"><img src="/favicon.svg" alt="" width="38" height="38"><span>ДУПЛЕТ<small>COUNTER-STRIKE 1.6</small></span></a>
+      <nav aria-label="Разделы сайта">
+        <a href="#main">Сервер</a><a href="#ranks">Ранги</a><a href="#bans">Бан-лист</a><a href="#vip">Steam VIP</a>
+      </nav>
+      <a class="button outline header-play" href="#main">Играть <span aria-hidden="true">↗</span></a>
+    </div>
+  </header>
+  <main id="content" tabindex="-1">
+    <section id="main" data-page aria-labelledby="home-title">
+      <div class="hero">
+        <div class="shell hero-content">
+          <p class="eyebrow"><span class="slashes" aria-hidden="true">//</span> Русский паблик CS 1.6</p>
+          <h1 id="home-title">ДУПЛЕТ<span>.</span></h1>
+          <p class="lede">Разминка с четырьмя режимами, две пистолетки и полный закуп. Заходи со Steam или без него.</p>
+          <div class="hero-actions">
+            <a class="button primary" id="join-game" href="steam://connect/185.97.255.42:27508"><span aria-hidden="true">▶</span> Подключиться</a>
+            <button class="button outline" id="copy-address" type="button">Скопировать IP <span aria-hidden="true">↗</span></button>
+          </div>
+          <p class="address" id="address-note" role="status">185.97.255.42:27508</p>
+        </div>
+      </div>
+      <div class="shell main-content">
+        <section class="signal" aria-label="Мониторинг сервера" aria-live="polite">
+          <div class="signal-state"><span id="status-dot" class="dot"></span><div><strong>Сервер</strong><span id="status-label">Проверяем связь</span></div></div>
+          <div><span>Карта</span><strong id="status-map">—</strong></div>
+          <div><span>Игроки</span><strong id="status-players">— / —</strong></div>
+          <div><span>Режим</span><strong id="status-phase">—</strong></div>
+        </section>
+        <section class="block" aria-labelledby="round-title">
+          <div class="section-heading"><h2 id="round-title">Как проходит матч</h2><a href="#maps">Карты <span aria-hidden="true">↘</span></a></div>
+          <div class="steps">
+            <article><div class="step-label">Разминка</div><h3>Четыре режима</h3><p>Ножи, гранаты, диглы и скауты сменяют друг друга. После смерти можно вернуться в бой.</p></article>
+            <article><div class="step-label">Раунды 1–2</div><h3>Пистолеты</h3><p>Первые два раунда играем с пистолетами и ножами. Снятые HP видит только стрелявший.</p></article>
+            <article><div class="step-label">Раунд 3+</div><h3>Полный закуп</h3><p>Открывается весь арсенал и меню Steam VIP. Парашют доступен всем при удержании E.</p></article>
+          </div>
+        </section>
+        <div class="details-grid">
+          <section id="maps" class="panel" aria-labelledby="maps-title">
+            <h2 id="maps-title">Карты</h2>
+            <dl class="facts">
+              <div><dt>Меньше 10 игроков</dt><dd><code>$2000$</code></dd></div>
+              <div><dt>От 10 игроков</dt><dd>Открыта ротация</dd></div>
+              <div><dt>Карты проекта</dt><dd>Склад и Двор</dd></div>
+            </dl>
+            <p class="muted">В ротации есть Dust2, Inferno, Nuke, Train, Cobble, Aztec и Office. Голосование открывается через <code>/rtv</code>.</p>
+          </section>
+          <section class="panel" aria-labelledby="commands-title">
+            <h2 id="commands-title">Команды в игре</h2>
+            <dl class="facts">
+              <div><dt><code>/help</code></dt><dd>Подсказки и команды</dd></div>
+              <div><dt><code>/rank</code> · <code>/skins</code></dt><dd>Ранг и коллекция</dd></div>
+              <div><dt><code>/heal</code> · <code>/rs</code></dt><dd>Перевязка и сброс счёта</dd></div>
+              <div><dt><code>/voteban</code> · <code>/admins</code></dt><dd>Голосование и админы онлайн</dd></div>
+            </dl>
+          </section>
+        </div>
+        <details class="panel connect-help">
+          <summary>Как зайти через консоль CS 1.6?</summary>
+          <p>Открой консоль клавишей <kbd>~</kbd> и введи <code id="connect-command">connect 185.97.255.42:27508</code>.</p>
+        </details>
+      </div>
+    </section>
+    <section id="ranks" class="shell interior" data-page hidden>
+      <div class="section-heading page-title">
+        <div><h1>Ранги</h1><p class="muted">За убийство соперника начисляется 10 XP. Разминка в статистику ранга не входит.</p></div>
+        <button type="button" class="button outline" data-refresh="ranks">Обновить <span aria-hidden="true">↻</span></button>
+      </div>
+      <div class="table-card" tabindex="0" role="region" aria-label="Таблица рангов">
+        <table><thead><tr><th>Место</th><th>Игрок</th><th>Звание</th><th>XP</th><th>Убийства</th><th>Смерти</th></tr></thead>
+        <tbody id="rank-rows"><tr><td colspan="6">Загружаем статистику…</td></tr></tbody></table>
+      </div>
+      <div class="dual">
+        <article class="panel"><h2>Звания</h2><dl id="rank-scale" class="facts"></dl></article>
+        <article class="panel"><h2>Коллекция</h2>
+          <dl class="facts"><div><dt>«Оксид» для Desert Eagle</dt><dd>При первом входе</dd></div><div><dt>«Янтарь» для AK-47 и M4A1</dt><dd>15%</dd></div><div><dt>20 XP</dt><dd>85%</dd></div></dl>
+          <p class="muted">Тайник открывается за каждые пять убийств. За повторный «Янтарь» начисляется 20 XP. Выбор скинов доступен через <code>/skins</code>.</p>
+        </article>
+      </div>
+    </section>
+    <section id="bans" class="shell interior" data-page hidden>
+      <div class="section-heading page-title">
+        <div><h1>Бан-лист</h1><p class="muted">Найди блокировку по игровому нику. Время указано по Москве.</p></div>
+        <button type="button" class="button outline" data-refresh="bans">Обновить <span aria-hidden="true">↻</span></button>
+      </div>
+      <form id="ban-filter" class="panel filters">
+        <label>Игровой ник <input name="nick" type="search" maxlength="64" placeholder="Поиск по нику"></label>
+        <label class="check"><input name="active" type="checkbox"> Только активные</label>
+        <button class="button primary" type="submit">Найти</button>
+      </form>
+      <div class="table-card" tabindex="0" role="region" aria-label="Таблица блокировок">
+        <table><thead><tr><th>Игрок</th><th>Источник</th><th>Начало</th><th>Окончание</th><th>Статус</th></tr></thead>
+        <tbody id="ban-rows"><tr><td colspan="5">Загружаем бан-лист…</td></tr></tbody></table>
+      </div>
+      <p class="muted table-note">Голосование через <code>/voteban</code> требует минимум четырёх участников помимо выбранного игрока. При 70% голосов «за» выдаётся бан на 30 минут.</p>
+    </section>
+    <section id="vip" class="shell interior" data-page hidden>
+      <div class="section-heading page-title"><div><h1>Steam VIP</h1><p class="muted">Семь дней при первом входе со Steam. Привилегии открываются с третьего раунда.</p></div></div>
+      <div class="dual vip-grid">
+        <article class="panel vip-card">
+          <h2>В каждом раунде</h2>
+          <dl class="facts"><div><dt>Оружие</dt><dd>Один комплект через <code>/vip</code></dd></div><div><dt>Гранаты</dt><dd>HE, световая и дымовая</dd></div><div><dt>Нож</dt><dd>«Клык» или «Тесак»</dd></div><div><dt>Форма</dt><dd>Выбор через <code>/knife</code></dd></div></dl>
+        </article>
+        <form class="panel checkout" id="checkout">
+          <h2>Продлить VIP</h2>
+          <p class="muted">Войди на сервер со Steam, напиши <code>/code</code> в чате и скопируй 18 цифр из консоли.</p>
+          <label>Игровой ник<input name="nick" autocomplete="nickname" maxlength="64" required></label>
+          <label>Код из игры<input name="code" inputmode="numeric" pattern="[0-9]{18}" maxlength="18" autocomplete="off" required></label>
+          <button class="button primary" type="submit" disabled id="pay">Перейти к оплате</button>
+          <p id="checkout-note" class="muted" role="status">Проверяем доступность оплаты…</p>
+        </form>
+      </div>
+    </section>
+  </main>
+  <footer><div class="shell footer"><a href="#main" class="wordmark"><img src="/favicon.svg" alt="" width="30" height="30"> ДУПЛЕТ</a><a href="#bans">Бан-лист</a><span>Counter-Strike 1.6</span></div></footer>
+</body>
+</html>
