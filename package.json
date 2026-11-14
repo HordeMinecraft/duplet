@@ -1,0 +1,21 @@
+{
+  "name": "shoroh-portal",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=24"
+  },
+  "scripts": {
+    "start": "node server.mjs",
+    "test": "node --test",
+    "emblem": "node tools/build-emblem.mjs"
+  },
+  "dependencies": {
+    "mysql2": "3.24.6",
+    "ssh2": "1.17.0"
+  },
+  "devDependencies": {
+    "gifenc": "1.0.3"
+  }
+}
