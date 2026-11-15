@@ -32,6 +32,13 @@ const staticFiles = new Map([
   ['/', 'index.html'], ['/app.css','app.css'], ['/app.js','app.js'], ['/duplet-hero.jpg','duplet-hero.jpg'],
   ['/favicon.svg','favicon.svg'], ['/welcome','welcome.html'], ['/emblem.gif','emblem.gif'],
 ]);
+for (const file of ['rifles','pistols','other-rifles','bandage']) {
+  for (const ext of ['jpg','gif']) {
+    const path = 'animations/' + file + '.' + ext;
+    staticFiles.set('/' + path,path);
+  }
+}
+staticFiles.set('/animations/deagle-spin.gif','animations/deagle-spin.gif');
 const types = {'.html':'text/html; charset=utf-8','.css':'text/css; charset=utf-8',
   '.js':'text/javascript; charset=utf-8','.jpg':'image/jpeg','.gif':'image/gif','.svg':'image/svg+xml'};
 const idPattern = /^[0-9a-f]{8}(?:-[0-9a-f]{4}){3}-[0-9a-f]{12}$/i;

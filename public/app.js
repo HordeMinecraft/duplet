@@ -156,7 +156,9 @@ function navigate() {
     if (link.hash === '#' + page) link.setAttribute('aria-current','page');
     else link.removeAttribute('aria-current');
   });
-  if (target === 'maps') requestAnimationFrame(() => $('#maps').scrollIntoView());
+  if (['maps','animations','weapon-inspect','bandage'].includes(target)) {
+    requestAnimationFrame(() => document.getElementById(target).scrollIntoView());
+  }
   else if (target !== 'content') window.scrollTo(0,0);
   if (page === 'ranks') ranks();
   if (page === 'bans') bans();

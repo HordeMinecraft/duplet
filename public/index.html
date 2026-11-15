@@ -33,6 +33,7 @@
             <button class="button outline" id="copy-address" type="button">Скопировать IP <span aria-hidden="true">↗</span></button>
           </div>
           <p class="address" id="address-note" role="status">185.97.255.42:27508</p>
+          <a class="hero-demo" href="#animations">Посмотреть анимации в игре <span aria-hidden="true">↓</span></a>
         </div>
       </div>
       <div class="shell main-content">
@@ -51,6 +52,52 @@
             <article><div class="step-label">Раунд 3+</div><h3>Полный закуп</h3><p>Открывается весь арсенал и меню Steam VIP. Парашют доступен всем при удержании E.</p></article>
           </div>
         </section>
+        <section id="animations" class="game-animations" aria-labelledby="animations-title">
+          <div class="section-heading"><h2 id="animations-title">Осмотр оружия и перевязка</h2></div>
+          <article class="panel animation-section" aria-labelledby="weapon-inspect">
+            <h3 id="weapon-inspect">Осмотр оружия</h3>
+            <p>В чате напиши <code>/inspect</code> или назначь клавишу <kbd>F</kbd> командой <code>bind f duplet_inspect</code> в консоли CS 1.6. Выстрел, перезарядка и смена оружия прерывают осмотр.</p>
+            <p class="muted">У всех 11 видов оружия свои движения. Deagle делает оборот вокруг указательного пальца, а M4A1-S поднимается по диагонали. Для осмотра нужно заряженное оружие вне зума. Поддерживаются обычные модели и скины сервера.</p>
+            <div class="animation-grid">
+              <details class="animation-demo">
+                <summary>
+                  <img class="animation-poster" src="./animations/rifles.jpg" width="640" height="360" loading="lazy" alt="">
+                  <span class="animation-label"><span>AWP, AK-47, M4A1-S и SG 552</span><span class="animation-action" aria-hidden="true"></span></span>
+                </summary>
+                <img class="animation-gif" src="./animations/rifles.gif" width="640" height="360" loading="lazy" alt="Осмотр AWP, AK-47, M4A1-S и SG 552 от первого лица">
+              </details>
+              <details class="animation-demo">
+                <summary>
+                  <img class="animation-poster" src="./animations/pistols.jpg" width="640" height="360" loading="lazy" alt="">
+                  <span class="animation-label"><span>USP, Deagle, Glock-18 и Dual Berettas</span><span class="animation-action" aria-hidden="true"></span></span>
+                </summary>
+                <img class="animation-gif" src="./animations/pistols.gif" width="640" height="360" loading="lazy" alt="Осмотр USP, Deagle, Glock-18 и Dual Berettas от первого лица">
+              </details>
+              <details class="animation-demo animation-wide">
+                <summary>
+                  <img class="animation-poster" src="./animations/other-rifles.jpg" width="960" height="180" loading="lazy" alt="">
+                  <span class="animation-label"><span>SG 550, FAMAS и Galil</span><span class="animation-action" aria-hidden="true"></span></span>
+                </summary>
+                <img class="animation-gif" src="./animations/other-rifles.gif" width="960" height="180" loading="lazy" alt="Осмотр SG 550, FAMAS и Galil от первого лица">
+              </details>
+            </div>
+            <p><a class="animation-link" href="./animations/deagle-spin.gif">Оборот Deagle в замедлении <span aria-hidden="true">↗</span></a></p>
+          </article>
+          <article class="panel animation-section bandage-section" aria-labelledby="bandage">
+            <div>
+              <h3 id="bandage">Перевязка</h3>
+              <p>Во время матча напиши <code>/heal</code> в чате. Стой на месте 2,5 секунды, чтобы восстановить до 25 HP. Перевязка доступна один раз за раунд.</p>
+              <p class="muted">Движение, выстрел, смена оружия и полученный урон прерывают перевязку.</p>
+            </div>
+            <details class="animation-demo" id="bandage-preview">
+              <summary>
+                <img class="animation-poster" src="./animations/bandage.jpg" width="440" height="220" loading="lazy" alt="">
+                <span class="animation-label"><span>Перевязка от первого лица</span><span class="animation-action" aria-hidden="true"></span></span>
+              </summary>
+              <img class="animation-gif" src="./animations/bandage.gif" width="440" height="220" loading="lazy" alt="Игрок накладывает бинт на предплечье">
+            </details>
+          </article>
+        </section>
         <div class="details-grid">
           <section id="maps" class="panel" aria-labelledby="maps-title">
             <h2 id="maps-title">Карты</h2>
@@ -66,6 +113,7 @@
             <dl class="facts">
               <div><dt><code>/help</code></dt><dd>Подсказки и команды</dd></div>
               <div><dt><code>/rank</code> · <code>/skins</code></dt><dd>Ранг и коллекция</dd></div>
+              <div><dt><code>/inspect</code></dt><dd><a class="animation-link" href="#weapon-inspect">Осмотр оружия</a></dd></div>
               <div><dt><code>/heal</code> · <code>/rs</code></dt><dd>Перевязка и сброс счёта</dd></div>
               <div><dt><code>/voteban</code> · <code>/admins</code></dt><dd>Голосование и админы онлайн</dd></div>
             </dl>
