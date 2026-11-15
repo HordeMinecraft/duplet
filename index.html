@@ -4,9 +4,19 @@
   <meta charset="utf-8">
   <meta name="duplet-snapshot" content="./server-data.json">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Дуплет — паблик Counter-Strike 1.6. Текущая карта, ранги, бан-лист и Steam VIP.">
+  <meta name="description" content="Дуплет — русский паблик CS 1.6. Dust2 при малом онлайне, ранги, скины и 7 дней Steam VIP при первом входе. IP сервера 185.97.255.42:27508.">
   <meta name="theme-color" content="#0b111c">
-  <title>Дуплет — паблик Counter-Strike 1.6</title>
+  <title>Дуплет — сервер CS 1.6 с Dust2, рангами и Steam VIP</title>
+  <link rel="canonical" href="https://hordeminecraft.github.io/duplet/">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="ru_RU">
+  <meta property="og:site_name" content="Дуплет">
+  <meta property="og:title" content="Дуплет — русский паблик CS 1.6">
+  <meta property="og:description" content="Dust2 при малом онлайне, четыре режима разминки и 7 дней VIP при первом входе со Steam. IP 185.97.255.42:27508.">
+  <meta property="og:url" content="https://hordeminecraft.github.io/duplet/">
+  <meta property="og:image" content="https://hordeminecraft.github.io/duplet/public/duplet-hero.jpg">
+  <meta property="og:image:alt" content="Обложка сервера «Дуплет»">
+  <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" href="./public/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="./public/app.css">
   <script type="module" src="./public/app.js"></script>
@@ -28,7 +38,7 @@
         <div class="shell hero-content">
           <p class="eyebrow"><span class="slashes" aria-hidden="true">//</span> Русский паблик CS 1.6</p>
           <h1 id="home-title">ДУПЛЕТ<span>.</span></h1>
-          <p class="lede">Разминка с четырьмя режимами, две пистолетки и полный закуп. Заходи со Steam или без него.</p>
+          <p class="lede">Заходи со Steam или без него. При малом онлайне играем на Dust2 за плент B. После разминки и двух пистолетных раундов открывается полный закуп.</p>
           <div class="hero-actions">
             <a class="button primary" id="join-game" href="steam://connect/185.97.255.42:27508"><span aria-hidden="true">▶</span> Подключиться</a>
             <button class="button outline" id="copy-address" type="button">Скопировать IP <span aria-hidden="true">↗</span></button>
@@ -38,7 +48,7 @@
       </div>
       <div class="shell main-content">
         <section class="signal" aria-label="Мониторинг сервера" aria-live="polite">
-          <div class="signal-state"><span id="status-dot" class="dot"></span><div><strong>Сервер</strong><span id="status-label">Проверяем связь</span></div></div>
+          <div class="signal-state"><span id="status-dot" class="dot"></span><div><strong>Сервер</strong><span id="status-label">Снимок сервера</span></div></div>
           <div><span>Карта</span><strong id="status-map">—</strong></div>
           <div><span>Игроки</span><strong id="status-players">— / —</strong></div>
           <div><span>Режим</span><strong id="status-phase">—</strong></div>
@@ -49,24 +59,24 @@
           <div class="steps">
             <article><div class="step-label">Разминка</div><h3>Четыре режима</h3><p>Ножи, гранаты, диглы и скауты сменяют друг друга. После смерти можно вернуться в бой.</p></article>
             <article><div class="step-label">Раунды 1–2</div><h3>Пистолеты</h3><p>Первые два раунда играем с пистолетами и ножами. Снятые HP видит только стрелявший.</p></article>
-            <article><div class="step-label">Раунд 3+</div><h3>Полный закуп</h3><p>Открывается весь арсенал и меню Steam VIP. Парашют доступен всем при удержании E.</p></article>
+            <article><div class="step-label">Раунд 3+</div><h3>Полный закуп</h3><p>Открывается меню <a href="./steam-vip/">Steam VIP</a>. Первая неделя VIP бесплатна при первом входе со Steam. Для парашюта удерживай E.</p></article>
           </div>
         </section>
         <div class="details-grid">
           <section id="maps" class="panel" aria-labelledby="maps-title">
-            <h2 id="maps-title">Карты</h2>
+            <h2 id="maps-title">Dust2 и ротация карт</h2>
             <dl class="facts">
-              <div><dt>Меньше 10 игроков</dt><dd><code>$2000$</code></dd></div>
-              <div><dt>От 10 игроков</dt><dd>Открыта ротация</dd></div>
+              <div><dt>Меньше 10 активных игроков</dt><dd>Dust2, только плент B</dd></div>
+              <div><dt>От 10 активных игроков</dt><dd>Обе точки и голосование за карту</dd></div>
               <div><dt>Карты проекта</dt><dd>Склад и Двор</dd></div>
             </dl>
-            <p class="muted">В ротации есть Dust2, Inferno, Nuke, Train, Cobble, Aztec и Office. Голосование открывается через <code>/rtv</code>.</p>
+            <p class="muted">В ротации есть <code>$2000$</code>, Inferno, Nuke, Train, Cobble, Aztec и Office. Чтобы предложить смену карты, напиши <code>/rtv</code>.</p>
           </section>
           <section class="panel" aria-labelledby="commands-title">
             <h2 id="commands-title">Команды в игре</h2>
             <dl class="facts">
               <div><dt><code>/help</code></dt><dd>Подсказки и команды</dd></div>
-              <div><dt><code>/rank</code> · <code>/skins</code></dt><dd>Ранг и коллекция</dd></div>
+              <div><dt><code>/rank</code> · <code>/top</code> · <code>/skins</code></dt><dd>Звание, топ игроков и коллекция</dd></div>
               <div><dt><code>/heal</code> · <code>/rs</code></dt><dd>Перевязка и сброс счёта</dd></div>
               <div><dt><code>/voteban</code> · <code>/admins</code></dt><dd>Голосование и админы онлайн</dd></div>
             </dl>
@@ -75,12 +85,13 @@
         <details class="panel connect-help">
           <summary>Как зайти через консоль CS 1.6?</summary>
           <p>Открой консоль клавишей <kbd>~</kbd> и введи <code id="connect-command">connect 185.97.255.42:27508</code>.</p>
+          <p><a href="./connect/">Инструкция по подключению и проверке связи</a></p>
         </details>
       </div>
     </section>
     <section id="ranks" class="shell interior" data-page hidden>
       <div class="section-heading page-title">
-        <div><h1>Ранги</h1><p class="muted">За убийство соперника начисляется 10 XP. Разминка в статистику ранга не входит.</p></div>
+        <div><h1>Ранги игроков</h1><p class="muted">За убийство соперника начисляется 10 XP. В игре команда <code>/top</code> открывает общий рейтинг, рейтинг за неделю и таблицу K/D.</p></div>
         <button type="button" class="button outline" data-refresh="ranks">Обновить <span aria-hidden="true">↻</span></button>
       </div>
       <div class="table-card" tabindex="0" role="region" aria-label="Таблица рангов">
@@ -131,6 +142,6 @@
       </div>
     </section>
   </main>
-  <footer><div class="shell footer"><a href="#main" class="wordmark"><img src="./public/favicon.svg" alt="" width="30" height="30"> ДУПЛЕТ</a><a href="#bans">Бан-лист</a><span>Counter-Strike 1.6</span></div></footer>
+  <footer><div class="shell footer"><a href="#main" class="wordmark"><img src="./public/favicon.svg" alt="" width="30" height="30"> ДУПЛЕТ</a><a href="./connect/">Как подключиться</a><a href="./steam-vip/">Условия Steam VIP</a><a href="#bans">Бан-лист</a></div></footer>
 </body>
 </html>
